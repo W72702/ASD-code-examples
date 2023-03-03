@@ -1,3 +1,10 @@
+#########################################################################################################################
+# This is the code for a beta version of a discord bot that me and my friend are working on all the code in here is mine#
+# I have adde comments to the code any comment that beggins with ######## is a comment from me                          #
+# If you want to run this go to https://discord.com/developers/applications and make an application then add a bot      #
+# Copy your bot token and pase it at the bottom where it says 'your_bot_token_here' leave the quotes                    #
+#########################################################################################################################
+
 from pydoc import cli
 import wave
 import nextcord, asyncio, nextwave
@@ -72,7 +79,7 @@ youtube = build('youtube', 'v3', developerKey=config.YOUTUBEKEY)
 
 #discord_ids = []
 
-######## twitch channels that it used to check to see if they where live but is not needed in the current version ########
+######## Twitch channels that it used to check to see if they where live but is not needed in the current version ########
 #twitch_channelss = ['twitch1', 'twitch2']
 
 ######## Start a discord task that loops every minute ########
@@ -181,7 +188,7 @@ async def check_twitch():
                         title_fake = req_data['data'][1]['title']
                         ######## Idk why there is two of these but there is ########
                         if not is_live:
-                                ######## if the is_live variable is not true then set it to true ########
+                                ######## If the is_live variable is not true then set it to true ########
                                 if not is_live:
                                     # Update is_live column to True
                                     con1.execute(f"UPDATE discord_twitch SET is_live = 1 WHERE twitch_channel_id = '{channel_name}'")
@@ -302,9 +309,9 @@ conn.commit()
 #        else:
 #            print("No new videos found.")
 
-######## The current task for check for videos ########
+######## The current check for new videos task ########
 @tasks.loop(minutes=1)
-######## declate the function name ########
+######## Declate the function name ########
 async def check_for_new_videos():
     ######## Open a text file and set the contents as a list ########
     with open('youtube.txt', 'r') as f:
@@ -329,7 +336,7 @@ async def check_for_new_videos():
             ######## Open another file and set its contents to a list ########
             with open('discord.txt', 'r') as f:
                 discord_ids = f.readlines()
-                ######## for each discord channel id in that list then checck if its in the data base if it is then skip it if its not then add it ########
+                ######## For each discord channel id in that list then checck if its in the data base if it is then skip it if its not then add it ########
                 for discord_channel_id in discord_ids:
                     discord_channel_id = discord_channel_id.strip()
                     if existing_discord_channel_id == discord_channel_id:
@@ -365,7 +372,7 @@ async def check_for_new_videos():
         ######## Grab everything we need from the database ########
         c.execute('SELECT latest_video_id, discord_channel_id, failed_last_send FROM discord_youtube WHERE youtube_channel_id = ?', (yt_channel_id,))
         row = c.fetchone()
-        ######## if the data is not none set the previous video id discord channel id and faild last send variables to the data ########
+        ######## If the data is not none set the previous video id discord channel id and faild last send variables to the data ########
         if row is not None:
             previous_video_id, discord_channel_id, failed_last_send = row
             ######## Check if latest video ID is different from the last video if of the channel ########
@@ -438,16 +445,16 @@ if decoded is not None:
 ######## Connect to a lavalink server ########
 #async def node_connect():
     #await client.wait_until_ready()
-    ######## there is alot if server here ########
+    ######## There is alot if server here ########
     #await nextwave.NodePool.create_node(bot=client, host='51.161.130.134', port=10351, password='youshallnotpass', spotify_client=spotify.SpotifyClient(client_id="e0d4ad86107f40e39aba959c6e4635fe", client_secret="392b576420894306b486d2cfc1ae48d9"))
     #await nextwave.NodePool.create_node(bot=client, host='20.77.114.214', port=10351, password='youshallnotpass')
     #await nextwave.NodePool.create_node(bot=client, host='lavalinkinc.ml', port=443, password='incognito', https=True)
 
-######## create a wavelink node ########
+######## Create a wavelink node ########
 #async def create_nodes():
 #    await nextwave.NodePool.create_node(bot=client, spotify_client=spotify.SpotifyClient(client_id="e0d4ad86107f40e39aba959c6e4635fe", client_secret="392b576420894306b486d2cfc1ae48d9"))
 
-######## on the succesful connection of the node print to console ########
+######## On the succesful connection of the node print to console ########
 @client.event
 async def on_nextwave_node_ready(node: nextwave.Node):
     print("WaveLink Connected!")
@@ -455,7 +462,7 @@ async def on_nextwave_node_ready(node: nextwave.Node):
 ######## This would be a list of blacklisted words for the image recognition stuff thats coming up ########
 blacklist = [blacklist_words]
 
-######## a list of allowed discord user ids for the staff command bellow ########
+######## A list of allowed discord user ids for the staff command bellow ########
 allowed_users = ["user_id", "user_id"] # List of allowed user IDs
 
 ######## Staff command ########
@@ -628,4 +635,4 @@ async def leave(ctx):
 #check_twitch.start()
 #check_for_new_videos.start()
 ######## Login to the bot to make this all work ########
-client.run(config.TOKEN)
+client.run('your_bot_token_here')
