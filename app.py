@@ -33,10 +33,10 @@ client = aBot()
 
 app = Quart(__name__)
 app.secret_key = b"random bytes representing quart secret key"
-app.config["DISCORD_CLIENT_ID"] = 889429542584856607    # Discord client ID.
-app.config["DISCORD_CLIENT_SECRET"] = "kbiCOohquAVZH7lrMg2aCaM6iy7C3J-j"                # Discord client secret.
+app.config["DISCORD_CLIENT_ID"] = discord_client_id    # Discord client ID.
+app.config["DISCORD_CLIENT_SECRET"] = "discord_client_secret"                # Discord client secret.
 app.config["DISCORD_REDIRECT_URI"] = "http://localhost:3000/callback/"                 # URL to your callback endpoint.
-app.config["DISCORD_BOT_TOKEN"] = "ODg5NDI5NTQyNTg0ODU2NjA3.GhQx4t.5JTsazooiGrsDdoeXw7zVwdUNkOgSzAteuQcXI"                    # Required to access BOT resources.
+app.config["DISCORD_BOT_TOKEN"] = "discord_bot_token"                    # Required to access BOT resources.
 
 discord = DiscordOAuth2Session(app)
 
@@ -273,7 +273,7 @@ async def run_app():
     await app.run_task(port=3000)
 
 async def run_client():
-    await client.start('ODg5NDI5NTQyNTg0ODU2NjA3.GhQx4t.5JTsazooiGrsDdoeXw7zVwdUNkOgSzAteuQcXI')
+    await client.start('discord_bot_token')
 
 youtube = build('youtube', 'v3', developerKey=config.YOUTUBEKEY)
 conn = sqlite3.connect('studio.db')
