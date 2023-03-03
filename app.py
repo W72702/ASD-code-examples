@@ -1,7 +1,7 @@
 #############################################################################
 # This is a cut down and commented version of another file and will not run #
 # Any Comments starting with ###### are comments by me                      #
-# This file is the bits of code I worked on for Studios dashboard (app.py)  #
+# This file is the bits of code I worked on for Studios dashboard           #
 #############################################################################
 
 from quart import Quart, render_template, request, session, redirect, url_for
