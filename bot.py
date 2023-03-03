@@ -31,8 +31,8 @@ async def on_ready():
 
 async def add_channels():
     '''for channel_id in channel_ids:
-        c.execute('UPDATE discord_youtube SET discord_channel_id = ? WHERE youtube_channel_id = ?', (1076249596000469062, 'UCa2f3cS4CRxijTxS4l9V4aw'))
-        c.execute('UPDATE discord_youtube SET discord_channel_id = ? WHERE youtube_channel_id = ?', (1076283131671367710, 'UCb962Gab1wTXnqcde-Fm4DQ'))
+        c.execute('UPDATE discord_youtube SET discord_channel_id = ? WHERE youtube_channel_id = ?', (discord_channel, 'youtube_id'))
+        c.execute('UPDATE discord_youtube SET discord_channel_id = ? WHERE youtube_channel_id = ?', (discord_channel, 'youtube_id'))
         c.execute('SELECT youtube_channel_id FROM discord_youtube WHERE youtube_channel_id = ?', (channel_id,))
         existing_channel = c.fetchone()
         if existing_channel:
@@ -57,7 +57,7 @@ async def add_channels():
 
 # Set up the YouTube Data API client
 youtube = build('youtube', 'v3', developerKey=config.YOUTUBEKEY)
-DISCORD_CHANNEL_ID = 1076283131671367710
+DISCORD_CHANNEL_ID = discord_channel
 
 #@client.command()
 #async def channel(ctx):
@@ -392,12 +392,12 @@ if decoded is not None:
 async def on_nextwave_node_ready(node: nextwave.Node):
     print("WaveLink Connected!")
 
-blacklist = ['grass', 'nipple', 'naked', 'erotic']
+blacklist = [blacklist_words]
 
 
-allowed_users = ["506743009120092160", "675589895137394705"] # List of allowed user IDs
+allowed_users = ["user_id", "user_id"] # List of allowed user IDs
 
-@client.slash_command(name="staff", guild_ids=[980245651868745798])
+@client.slash_command(name="staff", guild_ids=[discord_guild_id])
 @commands.is_owner()
 async def staff(interaction: nextcord.Interaction, message: str):
         print("Messageing all servers")
@@ -444,7 +444,7 @@ async def hello(ctx):
 
 openai.api_key = config.OPENAIKEY
 
-gpt_blacklist = "C:\\Users\\Grey Campbell\\Downloads\\BASIC BOT TEMPLATE - MASTER COPY\\blacklist.txt" #CHANGE THIS TO WHERE THE FILE IS
+gpt_blacklist = "blacklist.txt"
 
 @client.command()
 async def chatgpt(ctx):
