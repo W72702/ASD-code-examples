@@ -1,9 +1,9 @@
-#########################################################################################################################
-# This is the code for a beta version of a discord bot that me and my friend are working on all the code in here is mine#
-# I have adde comments to the code any comment that beggins with ######## is a comment from me                          #
-# If you want to run this go to https://discord.com/developers/applications and make an application then add a bot      #
-# Copy your bot token and pase it at the bottom where it says 'your_bot_token_here' leave the quotes                    #
-#########################################################################################################################
+##########################################################################################################################
+# This is the code for a beta version of a discord bot that me and my friend are working on all the code in here is mine #
+# I have adde comments to the code any comment that beggins with ######## is a comment from me                           #
+# If you want to run this go to https://discord.com/developers/applications and make an application then add a bot       #
+# Copy your bot token and pase it at the bottom where it says 'your_bot_token_here' leave the quotes                     #
+##########################################################################################################################
 
 from pydoc import cli
 import wave
