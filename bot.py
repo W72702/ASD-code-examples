@@ -1,8 +1,8 @@
 ##########################################################################################################################
 # This is the code for a beta version of a discord bot that me and my friend are working on all the code in here is mine #
-# I have adde comments to the code any comment that beggins with ######## is a comment from me                           #
+# I have added comments to the code any comment that begins with ######## is a comment from me                           #
 # If you want to run this go to https://discord.com/developers/applications and make an application then add a bot       #
-# Copy your bot token and pase it at the bottom where it says 'your_bot_token_here' leave the quotes                     #
+# Copy your bot token and paste it at the bottom where it says 'your_bot_token_here' leave the quotes                     #
 ##########################################################################################################################
 
 from pydoc import cli
@@ -28,7 +28,7 @@ import datetime
 intents = nextcord.Intents.default()
 intents.message_content = True
 
-######## Setting up the bot and setting a preffix ########
+######## Setting up the bot and setting a prefix ########
 client = commands.Bot(command_prefix="b-", intents=intents)
 
 ######## When the bot is ready it prints to the terminal ########
@@ -36,7 +36,7 @@ client = commands.Bot(command_prefix="b-", intents=intents)
 async def on_ready():
     print("Bot Is Online")
 
-######## An old function to add youtube channels to the database an be uncommented and used if needed ########
+######## An old function to add youtube channels to the database can be uncommented and used if needed ########
 #async def add_channels():
 #    for channel_id in channel_ids:
 #        c.execute('UPDATE discord_youtube SET discord_channel_id = ? WHERE youtube_channel_id = ?', (discord_channel, 'youtube_id'))
@@ -69,17 +69,17 @@ youtube = build('youtube', 'v3', developerKey=config.YOUTUBEKEY)
 ######## Declaring the discord channel that notifications were sent to ########
 #DISCORD_CHANNEL_ID = discord_channel
 
-######## Old command that update the discord channel that the youtube and twitch notifications where sent to ########
+######## Old command that updates the discord channel that the youtube and twitch notifications were sent to ########
 #@client.command()
 #async def channel(ctx):
 #    set(CHANNEL_ID = {ctx.message.content}) 
 
-######## Lists that where used in older versions of this bot ########
+######## Lists that were used in older versions of this bot ########
 #channel_ids = []
 
 #discord_ids = []
 
-######## Twitch channels that it used to check to see if they where live but is not needed in the current version ########
+######## Twitch channels that it used to check to see if they were live but is not needed in the current version ########
 #twitch_channelss = ['twitch1', 'twitch2']
 
 ######## Start a discord task that loops every minute ########
@@ -131,7 +131,7 @@ async def check_twitch():
         'Authorization': f'Bearer {access_token}',
     }
     
-    ######## For each channel in the database ping the twitch API so see if there live ########
+    ######## For each channel in the database use the twitch API to see if their live ########
     for channel in channel_info:
         channel_name = channel[0]
         is_live = channel[1]
@@ -145,7 +145,7 @@ async def check_twitch():
         time.sleep(2)
         ######## If there is data in the response then continue ########
         if req_data['data']:
-            ######## Check if there is a is_live variable in the 10th row of the array if there is continue if there isn't fail ########
+            ######## Check if there is an is_live variable in the 10th row of the array if there is continue if there isn't fail ########
             try:
                 channel_isLive1 = req_data['data'][9]['is_live']
                 channel_isLive1
